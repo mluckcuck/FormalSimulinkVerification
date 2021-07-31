@@ -1,0 +1,22 @@
+\section{Formal Verification of Simulink Models}
+\label{sec:formalSimulinkVerification}
+
+This section discusses some of the main approaches used in the literature to formally verify or model Simulink diagrams. The literature is organised by the main formal approach used.
+
+The literature is summarised in Section~\ref{sec:litSum}.
+
+\subsection{Theorem Proving}
+\label{sec:tp}
+
+In Araiza-Illan et al.\cite{araiza-illan_formal_2014}, assertion blocks are added to Simulink models to describe the properties (over the Simulink signals) that the system should preserve. These assertions take the form of a \texttt{require} block, which is used to describe a Hoare triple: $\{precondition\} model \{postondition\}$. A \texttt{require} block is constructed from an \texttt{Enabled Subsystem}, which conditionally executes when a control signal (the precondition) is positive and itself contains an \texttt{Assert} block. Once this specification is added to the Simulink diagram, they provide an automatic translation into the input language of the Why3\footnote{Why3: \url{http://why3.lri.fr/}} theorem proving platform, and used CVC3\footnote{CVC3: \url{https://cs.nyu.edu/acsys/cvc3/}} to verify the Simulink diagram against the properties described by the assertion blocks. Their translation strategy works on Simulink signals that are scalar and discrete, but they aimed to extend the approach to continuous time. 
+
+In Bernardeschi et al.~\cite{bernardeschi_pvs-simulink_2018} describe a parallel combination of the theorem prover PVS\footnote{PVS: \url{http://pvs.csl.sri.com/} } and Simulink models, to analyse Cyber-Physical Systems\footnote{Cyber-Physical Systems are those where a computer system controls a mechanism that operates in and effects the `real-world'.}. The PVS model captures the discrete semantics of the system and the Simulink model captures the continuous dynamics of the system's environment. Their example system is a pacemaker. Their approach centres around co-simulation. They use PVSio-Web\footnote{PVSio-Web: \url{http://www.pvsioweb.org/}}, which is a Web framework that enables formal-model-based development of Human-Machine Interfaces, to connect the PVS model to the Simulink diagram. They also use an additional block in the Simulink diagram to extract the simulation data. PVSio-Web uses this block's output to keep the PVS model in-sync with the Simulink simulation.
+
+\section{Model Checking}
+\label{sec:modelChecking}
+
+Meenakshi et al.~\cite{meenakshi_tool_2006} present a tool that automatically translates (certain) Simulink diagrams into the input language of the model checker NuSMV\footnote{NuSMV: \url{https://nusmv.fbk.eu/index.html}}. Their tool parses information about the Simulink diagram from its textual representation in an \texttt{mdl} file, then translates it for NuSMV. The translation is restricted to discrete Simulink diagrams only, due to NuSMV only catering for discre Their tool can also reverse the translation, to aid with debugging the Simulink diagram from counterexamples. 
+
+\subsection{Other}
+
+In Zhou and Kumar~\cite{zhou_semantic_2012} present algorithms to translate (a class of) Simulink diagrams to \gls{ioefa}. Each Simulink block is modelled by a combination of an \gls{ioefa} for its output-assignments and an \gls{ioefa} for state-updates. They state that their approach has ``no specific restriction on the types of Simulink blocks or the structure of Simulink diagrams supported and can handle multirate Simulink diagrams, sample times with initial offsets and variable-step simulation etc." However, the paper only presents algorithms for the translation, there is no tool support mentioned.

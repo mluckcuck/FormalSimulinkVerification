@@ -1,0 +1,31 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[UKenglish]{isodate}
+\usepackage{lmodern}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage{hyperref}
+\usepackage{glossaries}
+\loadglsentries{acronyms}
+
+\author{Matt Luckcuck}
+\title{Formal Verification of Simulink Models}
+\date{\today}
+\begin{document}
+
+\maketitle
+
+\input{tex/intro.tex}
+
+\input{tex/formalSimulinkVerification.tex}
+
+\input{tex/literatureSummary.tex}
+
+\input{tex/discussion.tex}
+
+
+\bibliographystyle{plain}
+\bibliography{Formal-Simulink-Verification.bib}
+
+\end{document}
