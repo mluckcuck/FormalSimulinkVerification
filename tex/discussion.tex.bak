@@ -1,7 +1,13 @@
 \section{Discussion}
 
+\subsection{Co-Simulation}
+
+Bernardeschi et al. 2018~\cite{bernardeschi_pvs-simulink_2018}
+
 \subsection{Interfacing with Simulink}
 
 \subsubsection{Add Blocks to Diagram}
 
-Araiza-Illan et al.\cite{araiza-illan_formal_2014}
+Araiza-Illan et al. 2014~\cite{araiza-illan_formal_2014}
+
+Bernardeschi et al. 2018~\cite{bernardeschi_pvs-simulink_2018}
